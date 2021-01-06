@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:interLibras/app/app_widget.dart';
 import 'package:interLibras/app/modules/home/home_module.dart';
 
+import 'modules/academy/academy_module.dart';
+import 'modules/interpreter/interpreter_module.dart';
+import 'modules/profile/profile_module.dart';
+
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
@@ -12,7 +16,11 @@ class AppModule extends MainModule {
 
   @override
   List<ModularRouter> get routers => [
-        ModularRouter(Modular.initialRoute, module: HomeModule()),
+        // ModularRouter('/',child: (_,args)=>SplashPage()),
+        ModularRouter('/home', module: HomeModule()),
+        ModularRouter('/profile', module: ProfileModule()),
+        ModularRouter('/interpreter', module: InterpreterModule()),
+        ModularRouter('/academy', module: AcademyModule()),
       ];
 
   @override

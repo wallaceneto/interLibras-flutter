@@ -27,18 +27,21 @@ scripts:
     mobx_watch: $clean & $get & $runner watch
     mobx_build_clean: $clean & $get & $runner build --delete-conflicting-outputs
 
-
-
 environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  auto_size_text: ^2.1.0
+  flutter_svg: ^0.18.0
   dio: ^3.0.10
   flutter_mobx: ^1.1.0+2
   mobx: ^1.2.1+4
   flutter_modular: ^2.0.1
   flutter:
     sdk: flutter
+
+#dependency_overrides:
+#  flutter_svg: ^0.18.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -57,15 +60,20 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/images
-    - assets/icons
-    - assets/model_3d
+    - assets/images/cubo1.svg
+    - assets/images/cubo2.svg
+    - assets/images/cubo3.svg
+    - assets/images/cubo4.svg
+    - assets/images/cubo5.svg
+    - assets/images/cubo6.svg
+  #  - assets/model_3d
+    - assets/icons/school.svg
+    - assets/icons/interpreter.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:interLibras/app/shared/utils/size_config.dart';
+import 'package:interLibras/app/shared/widgets/bottom_bar_widget.dart';
+import 'package:interLibras/app/shared/widgets/home_card_widget.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,14 +17,38 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   //use 'controller' variable to access controller
 
   @override
+  void initState() {
+    super.initState();
+    controller.intializeCards();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Column(
-        children: <Widget>[],
-      ),
-    );
+    SizeConfig().init(context);
+    return WillPopScope(
+        onWillPop: () async => false,
+        child: Scaffold(
+          bottomNavigationBar: BottomBarWidget(),
+          appBar: AppBar(
+            title: Text(widget.title),
+          ),
+          body: GridView.builder(
+              shrinkWrap: true,
+              itemCount: controller.cards.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, childAspectRatio: 1),
+              padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+              itemBuilder: (BuildContext ctxt, int index) {
+                return new Padding(
+                  padding: EdgeInsets.all(3),
+                  child: HomeCardWidget(
+                    name: controller.cards[index].name,
+                    assetName: controller.cards[index].assetName,
+                    action: controller.cards[index].action,
+                    iconPressed: controller.cards[index].iconPressed,
+                  ),
+                );
+              }),
+        ));
   }
 }
