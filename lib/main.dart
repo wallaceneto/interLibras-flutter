@@ -1,5 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:interLibras/app/app_module.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:interLibras/components/drawer/menu.dart';
 
-void main() => runApp(ModularApp(module: AppModule()));
+void main() => runApp(MaterialApp(
+      home: Home(),
+    ));
+
+class Home extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Meu Perfil'),
+      ),
+      endDrawer: MenuDrawer(),
+    );
+  }
+}
